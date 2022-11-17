@@ -1,3 +1,5 @@
-' * http://localhost:85/ '
+# Instructions
+
+* http://localhost:85/
 * yaml files to get you started
-* nodejs api integrated
+* nodejs api integration
