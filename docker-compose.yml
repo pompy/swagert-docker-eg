@@ -1,0 +1,24 @@
+version: '2'
+services:
+    swagger-ui:
+       image: swaggerapi/swagger-ui
+       container_name: swagger_ui_container
+       ports:
+          - "85:8080"
+       volumes:
+          - ./doc:/usr/share/nginx/html/doc
+       environment:
+             URLS_PRIMARY_NAME: "Startup"
+             URLS: "[{ url: 'doc/startupapi.yaml', name: 'Startup'},
+              { url: 'doc/secondapi.yaml', name: 'Second'},
+             ]"
+             
+    node:
+        build:
+           context: .
+           dockerfile: NODE.DOCKERFILE
+        volumes:
+           - ./appnode:/app
+           -  /app/node_modules
+        ports: 
+           - "5000:5000"

@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  version: "1.0"
+  title: "Startup API"
+
+servers:
+  - url: http://localhost:5000/
+    description: production server
+  - url: http://localhost:5000/
+    description: staging server
+    
+  
+paths:
+  /hello/{user}:
+    get:
+      description: Returns the name!
+      parameters:
+        - name: user
+          in: path
+          type: string
+          required: true
+          description: The name of the person which needs to be returned.
+      responses:
+        200:
+          description: Returns the name.
+          schema:
+            type: string
+        400:
+          description: Invalid characters in "user" were provided.
+  /age/{no}:
+    get:
+      description: Returns  age!
+      parameters:
+        - name: no
+          in: path
+          type: integer
+          required: true
+          description: The age of the person which needs to be returned.
+      responses:
+        200:
+          description: Returns the age.
+          schema:
+            type: integer
+        400:
+          description: Invalid characters in "age" were provided.
